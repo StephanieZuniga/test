@@ -6,6 +6,7 @@ target 'testProject' do
   use_frameworks!
 
   # Pods for testProject
+  pod 'Mux-Stats-AVPlayer'
 
   target 'testProjectTests' do
     inherit! :search_paths
