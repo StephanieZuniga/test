@@ -10,11 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
-#if TVOS
-#import <MuxCore/MuxCoreTv.h>
-#else
 #import <MuxCore/MuxCore.h>
-#endif
 #endif
 #endif
 
@@ -56,8 +52,6 @@ typedef NS_ENUM(NSUInteger, MUXSDKViewOrientation) {
     NSTimer *_timeUpdateTimer;
     CFAbsoluteTime _lastPlayheadTimeUpdated;
     float _lastPlayheadTimeMs;
-    CFAbsoluteTime _lastPlayheadTimeOnPauseUpdated;
-    float _lastPlayheadTimeMsOnPause;
     BOOL _seeking;
     BOOL _started;
     BOOL _shouldHandleAVQueuePlayerItem;
@@ -70,8 +64,6 @@ typedef NS_ENUM(NSUInteger, MUXSDKViewOrientation) {
     BOOL _sourceDimensionsHaveChanged;
     CGSize _lastDispatchedVideoSize;
     BOOL _automaticErrorTracking;
-    BOOL _automaticVideoChange;
-    BOOL _didTriggerManualVideoChange;
 }
 
 @property (nonatomic, weak) id<MUXSDKPlayDispatchDelegate>  playDispatchDelegate;
@@ -95,9 +87,7 @@ typedef NS_ENUM(NSUInteger, MUXSDKViewOrientation) {
 - (float)getCurrentPlayheadTimeMs;
 - (void)dispatchRenditionChange;
 - (BOOL)setAutomaticErrorTracking:(BOOL)automaticErrorTracking;
-- (BOOL)setAutomaticVideoChange:(BOOL)automaticVideoChange;
 - (void)dispatchError:(NSString *)code withMessage:(NSString *)message;
-- (void)didTriggerManualVideoChange;
 
 @end
 
